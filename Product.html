@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">منتجاتنا - إطار المسافر</title>
+
+    <!-- Bootstrap CSS -->
+    <link id="bootstrap-css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-red: #D82E38;
+            --primary-red-hover: #b0222b;
+            --dark-color: #1a1a1a;
+            --light-color: #f9f9f9;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --card-bg: #ffffff;
+            --badge-best-seller: #ffc107;
+            --badge-top-rated: #0dcaf0;
+            --badge-value: #198754;
+        }
+
+        body.dark-mode {
+            --light-color: #121212;
+            --dark-color: #000000;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --border-color: #444;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- Global --- */
+        .section-padding { padding: 60px 0; }
+        .btn-red {
+            background-color: var(--primary-red);
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 10px 25px;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-red);
+        }
+        .btn-red:hover {
+            background-color: var(--primary-red-hover);
+            color: white;
+            border-color: var(--primary-red-hover);
+            transform: translateY(-2px);
+        }
+        
+        /* --- Header & Navbar --- */
+        .top-header { background-color: #000; color: #fff; padding: 5px 0; font-size: 0.9rem; }
+        .top-header a { color: #fff; text-decoration: none; margin: 0 10px; }
+        .main-navbar { background-color: var(--card-bg) !important; box-shadow: 0 2px 15px rgba(0,0,0,0.08); transition: background-color 0.3s; }
+        .navbar-brand { font-weight: 800; color: var(--dark-color); }
+        body.dark-mode .navbar-brand { color: var(--light-color); }
+        .navbar-brand .fa-road { color: var(--primary-red); }
+        html[lang="en"] .navbar-nav { margin-left: auto !important; }
+        .dark-mode-toggle { cursor: pointer; margin: 0 15px; font-size: 1.2rem; color: var(--text-color); }
+        body.dark-mode .dark-mode-toggle { color: #fff; }
+
+        /* --- Page Header --- */
+        .page-header {
+            background: var(--dark-color) url('https://images.unsplash.com/photo-1517524206127-48bbd363d5d7?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        .page-header::before {
+             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+             background-color: rgba(0,0,0,0.6);
+        }
+        .page-header h1 {
+            font-weight: 800;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Products Section --- */
+        .filter-controls {
+            margin-bottom: 2.5rem;
+        }
+        .filter-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-red);
+            color: #fff;
+            border-color: var(--primary-red);
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-align: start;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .product-card-img-container {
+            position: relative;
+        }
+        .product-card-img {
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            width: 100%;
+        }
+        .product-badge {
+            position: absolute;
+            bottom: 10px;
+            inset-inline-start: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #000;
+        }
+        .badge-best-seller { background-color: var(--badge-best-seller); }
+        .badge-top-rated { background-color: var(--badge-top-rated); }
+        .badge-value { background-color: var(--badge-value); color: #fff;}
+        .badge-premium { background-color: var(--dark-color); color: #fff;}
+        .product-card-price {
+            position: absolute;
+            bottom: 10px;
+            inset-inline-end: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: var(--dark-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .product-card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .product-card-title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        body.dark-mode .product-card-title {
+            color: var(--light-color);
+        }
+        .product-card-desc {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+        .product-card-link {
+            font-weight: bold;
+            color: var(--primary-red);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .product-card-link:hover {
+            opacity: 0.8;
+        }
+
+        
+        /* --- Footer --- */
+        .main-footer { background-color: var(--dark-color); color: #fff; }
+        .main-footer h5 { color: var(--primary-red); font-weight: 800; }
+        .main-footer a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+        .main-footer a:hover { color: #fff; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Top Header -->
+    <header class="top-header">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div><a href="tel:920012345"><i class="fas fa-phone"></i> 9200-12345</a><a href="mailto:contact@almusafir.com"><i class="fas fa-envelope"></i> contact@almusafir.com</a></div>
+            <div><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+        </div>
+    </header>
+
+    <!-- Main Navbar -->
+    <nav class="navbar navbar-expand-lg main-navbar sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-road"></i> <span data-lang-text="siteName">إطار المسافر</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html" data-lang-text="navHome">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about-us" data-lang-text="navAbout">عن الشركة</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.html" data-lang-text="navProducts">المنتجات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#our-services" data-lang-text="navServices">الخدمات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#location" data-lang-text="navContact">تواصل معنا</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                   <i id="darkModeToggle" class="fas fa-moon dark-mode-toggle"></i>
+                   <button id="langSwitcher" class="btn btn-outline-secondary btn-sm"></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 id="category-title" data-lang-text="ourProducts">منتجاتنا</h1>
+            </div>
+        </section>
+
+        <!-- Products Grid Section -->
+        <section class="products-grid-section section-padding">
+            <div class="container">
+                <!-- Filter Controls -->
+                <div class="text-center filter-controls">
+                    <button class="btn filter-btn" data-category="all" data-lang-text="filterAll">الكل</button>
+                    <button class="btn filter-btn" data-category="tires" data-lang-text="filterTires">الإطارات</button>
+                    <button class="btn filter-btn" data-category="batteries" data-lang-text="filterBatteries">البطاريات</button>
+                    <button class="btn filter-btn" data-category="oils" data-lang-text="filterOils">الزيوت</button>
+                </div>
+                <!-- Products Grid -->
+                <div id="products-grid" class="row g-4">
+                    <!-- Products will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="main-footer section-padding pb-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4"><h5 ><i class="fas fa-road"></i> <span data-lang-text="siteName">إطار المسافر</span></h5><p data-lang-text="footerAbout">وجهتك الأولى لكل ما يتعلق بإطارات وبطاريات وزيوت السيارات في المملكة.</p></div>
+                <div class="col-lg-2"><h5 data-lang-text="quickLinks">روابط سريعة</h5><ul class="list-unstyled"><li><a href="index.html" data-lang-text="navHome">الرئيسية</a></li><li><a href="index.html#about-us" data-lang-text="navAbout">عن الشركة</a></li><li><a href="index.html#our-services" data-lang-text="navServices">الخدمات</a></li><li><a href="index.html#location" data-lang-text="navContact">تواصل معنا</a></li></ul></div>
+                <div class="col-lg-3"><h5 data-lang-text="ourServices">خدماتنا</h5><ul class="list-unstyled"><li><a href="products.html?category=tires" data-lang-text="serviceTires">بيع الإطارات</a></li><li><a href="products.html?category=batteries" data-lang-text="serviceBatteries">بيع البطاريات</a></li><li><a href="products.html?category=oils" data-lang-text="serviceOils">تغيير الزيوت</a></li><li><a href="index.html#our-services" data-lang-text="serviceCheckup">فحص وصيانة</a></li></ul></div>
+                <div class="col-lg-3"><h5 data-lang-text="contactUs">تواصل معنا</h5><ul class="list-unstyled"><li><i class="fas fa-map-marker-alt me-2"></i> <span data-lang-text="address">الرياض، المملكة العربية السعودية</span></li><li><i class="fas fa-phone me-2"></i> 9200-12345</li><li><i class="fas fa-envelope me-2"></i> contact@almusafir.com</li></ul></div>
+            </div>
+            <hr class="my-4"><div class="text-center"><p data-lang-text="copyright">&copy; 2024 إطار المسافر. جميع الحقوق محفوظة.</p></div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample product data
+            const products = {
+                tires: [
+                    { name: {ar: 'إطار ميشلان برايمسي 4', en: 'Michelin Primacy 4 Tire'}, price: '450 ر.س', img: 'https://placehold.co/300x300/CCCCCC/FFFFFF?text=Tire+1', desc: {ar: 'مصمم للسلامة الفائقة ويدوم طويلاً.', en: 'Designed for ultimate safety that lasts.'}, badge: {text: {ar: 'الأكثر مبيعاً', en: 'Best Seller'}, class: 'badge-best-seller'} },
+                    { name: {ar: 'إطار هانكوك كينرجي', en: 'Hankook Kinergy Tire'}, price: '380 ر.س', img: 'https://placehold.co/300x300/CCCCCC/FFFFFF?text=Tire+2', desc: {ar: 'أداء متوازن للراحة والتحكم.', en: 'Balanced performance for comfort and control.'}, badge: {text: {ar: 'أفضل تقييم', en: 'Top Rated'}, class: 'badge-top-rated'} },
+                    { name: {ar: 'إطار بريدجستون تورانزا', en: 'Bridgestone Turanza'}, price: '520 ر.س', img: 'https://placehold.co/300x300/CCCCCC/FFFFFF?text=Tire+3', desc: {ar: 'تجربة قيادة فاخرة وهادئة.', en: 'A luxurious and quiet driving experience.'}, badge: {text: {ar: 'فاخر', en: 'Premium'}, class: 'badge-premium'} },
+                    { name: {ar: 'إطار بيريللي بي زيرو', en: 'Pirelli P-Zero'}, price: '650 ر.س', img: 'https://placehold.co/300x300/CCCCCC/FFFFFF?text=Tire+4', desc: {ar: 'أداء رياضي فائق على الطرق الجافة والمبتلة.', en: 'Ultimate sport performance on dry and wet roads.'}, badge: {text: {ar: 'الأكثر مبيعاً', en: 'Best Seller'}, class: 'badge-best-seller'} },
+                ],
+                batteries: [
+                    { name: {ar: 'بطارية بوش S5 AGM', en: 'Bosch S5 AGM Battery'}, price: '600 ر.س', img: 'https://placehold.co/300x300/CCCCCC/FFFFFF?text=Battery+1', desc: {ar: 'قوة بدء استثنائية وعمر خدمة طويل.', en: 'Exceptional starting power and long service life.'}, badge: {text: {ar: 'فاخر', en: 'Premium'}, class: 'badge-premium'} },
+                    { name: {ar: 'بطارية إيه سي ديلكو الذهبية', en: 'ACDelco Gold Battery'}, price: '450 ر.س', img: 'https://placehold.co/300x300/CCCCCC/FFFFFF?text=Battery+2', desc: {ar: 'موثوقية عالية وأداء قوي في كل الظروف.', en: 'High reliability and strong performance in all conditions.'}, badge: {text: {ar: 'الأكثر مبيعاً', en: 'Best Seller'}, class: 'badge-best-seller'} },
+                ],
+                oils: [
+                    { name: {ar: 'زيت موبيل 1 تخليقي بالكامل', en: 'Mobil 1 Full Synthetic Oil'}, price: '120 ر.س', img: 'https://placehold.co/300x300/CCCCCC/FFFFFF?text=Oil+1', desc: {ar: 'حماية متقدمة للمحرك وأداء استثنائي.', en: 'Advanced engine protection and exceptional performance.'}, badge: {text: {ar: 'أفضل تقييم', en: 'Top Rated'}, class: 'badge-top-rated'} },
+                    { name: {ar: 'زيت كاسترول ماجناتيك', en: 'Castrol Magnatec Oil'}, price: '110 ر.س', img: 'https://placehold.co/300x300/CCCCCC/FFFFFF?text=Oil+2', desc: {ar: 'يلتصق بأجزاء المحرك لتوفير حماية مستمرة.', en: 'Clings to engine parts for continuous protection.'}, badge: {text: {ar: 'حزمة قيمة', en: 'Value Pack'}, class: 'badge-value'} },
+                ]
+            };
+            
+            const categoryTitles = {
+                tires: { ar: 'تشكيلة الإطارات', en: 'Our Tire Collection'},
+                batteries: { ar: 'تشكيلة البطاريات', en: 'Our Battery Collection'},
+                oils: { ar: 'تشكيلة الزيوت', en: 'Our Oil Collection'}
+            };
+
+            const translations = {
+                ar: {
+                    langBtn: "English", siteName: "إطار المسافر", navHome: "الرئيسية", navAbout: "عن الشركة", navProducts: "المنتجات", navServices: "الخدمات", navContact: "تواصل معنا",
+                    ourProducts: "منتجاتنا", requestQuote: "اطلب عرض سعر",
+                    filterAll: "الكل", filterTires: "الإطارات", filterBatteries: "البطاريات", filterOils: "الزيوت",
+                    footerAbout: "وجهتك الأولى لكل ما يتعلق بإطارات وبطاريات وزيوت السيارات في المملكة.", quickLinks: "روابط سريعة", footerAboutLink: "عن الشركة", ourServices: "خدماتنا", serviceTires: "بيع الإطارات", serviceBatteries: "بيع البطاريات", serviceOils: "تغيير الزيوت", serviceCheckup: "فحص وصيانة", contactUs: "تواصل معنا", address: "الرياض، المملكة العربية السعودية", copyright: "&copy; 2024 إطار المسافر. جميع الحقوق محفوظة."
+                },
+                en: {
+                    langBtn: "العربية", siteName: "Almusafir Tire", navHome: "Home", navAbout: "About Us", navProducts: "Products", navServices: "Services", navContact: "Contact Us",
+                    ourProducts: "Our Products", requestQuote: "Request Quote",
+                    filterAll: "All", filterTires: "Tires", filterBatteries: "Batteries", filterOils: "Oils",
+                    footerAbout: "Your first destination for everything related to car tires, batteries, and oils in the Kingdom.", quickLinks: "Quick Links", footerAboutLink: "About Us", ourServices: "Our Services", serviceTires: "Tire Sales", serviceBatteries: "Battery Sales", serviceOils: "Oil Change", serviceCheckup: "Checkup & Maintenance", contactUs: "Contact Us", address: "Riyadh, Saudi Arabia", copyright: "&copy; 2024 Almusafir Tire. All Rights Reserved."
+                }
+            };
+
+            let currentLanguage = localStorage.getItem('pageLanguage') || 'ar';
+            
+            function displayProducts(category) {
+                const grid = document.getElementById('products-grid');
+                grid.innerHTML = '';
+                let productList = [];
+
+                if (category === 'all' || !products[category]) {
+                    productList = [...products.tires, ...products.batteries, ...products.oils];
+                } else {
+                    productList = products[category];
+                }
+
+                productList.forEach(product => {
+                    const col = document.createElement('div');
+                    col.className = 'col-lg-3 col-md-4 col-sm-6 d-flex';
+                    col.innerHTML = `
+                        <div class="product-card">
+                            <div class="product-card-img-container">
+                                <img src="${product.img}" class="product-card-img" alt="${product.name[currentLanguage]}">
+                                <span class="product-badge ${product.badge.class}">${product.badge.text[currentLanguage]}</span>
+                                <span class="product-card-price">${product.price}</span>
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-card-title">${product.name[currentLanguage]}</h5>
+                                <p class="product-card-desc">${product.desc[currentLanguage]}</p>
+                                <a href="#" class="product-card-link mt-auto" data-lang-text="requestQuote">${translations[currentLanguage].requestQuote} <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(col);
+                });
+            }
+
+            const setLanguage = (lang) => {
+                currentLanguage = lang;
+                localStorage.setItem('pageLanguage', lang);
+                const t = translations[lang];
+
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                document.getElementById('bootstrap-css').href = lang === 'ar' 
+                    ? 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css' 
+                    : 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+
+                document.querySelectorAll('[data-lang-text]').forEach(el => {
+                    const key = el.dataset.langText;
+                    if (t[key]) el.innerHTML = t[key];
+                });
+
+                document.getElementById('langSwitcher').textContent = t.langBtn;
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const category = urlParams.get('category') || 'all';
+                
+                const pageTitleEl = document.getElementById('page-title');
+                const categoryTitleEl = document.getElementById('category-title');
+
+                if (category && categoryTitles[category]) {
+                    pageTitleEl.textContent = `${categoryTitles[category][lang]} - إطار المسافر`;
+                    categoryTitleEl.textContent = categoryTitles[category][lang];
+                } else {
+                     pageTitleEl.textContent = `${t.ourProducts} - إطار المسافر`;
+                     categoryTitleEl.textContent = t.ourProducts;
+                }
+                
+                updateActiveFilterButton(category);
+                displayProducts(category);
+            };
+            
+            function updateActiveFilterButton(activeCategory) {
+                 const filterButtons = document.querySelectorAll('.filter-btn');
+                 filterButtons.forEach(button => {
+                    if (button.dataset.category === activeCategory) {
+                        button.classList.add('active');
+                    } else {
+                        button.classList.remove('active');
+                    }
+                });
+            }
+
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    displayProducts(category);
+                    updateActiveFilterButton(category);
+                });
+            });
+
+            const setDarkMode = (isDark) => {
+                document.body.classList.toggle('dark-mode', isDark);
+                document.getElementById('darkModeToggle').classList.toggle('fa-sun', isDark);
+                document.getElementById('darkModeToggle').classList.toggle('fa-moon', !isDark);
+                localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+            };
+
+            document.getElementById('langSwitcher').addEventListener('click', () => {
+                const newLang = currentLanguage === 'ar' ? 'en' : 'ar';
+                setLanguage(newLang);
+            });
+
+            if(document.getElementById('darkModeToggle')) {
+                document.getElementById('darkModeToggle').addEventListener('click', () => {
+                    setDarkMode(!document.body.classList.contains('dark-mode'));
+                });
+            }
+
+            // Initial load
+            setLanguage(currentLanguage);
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                setDarkMode(true);
+            }
+        });
+    </script>
+</body>
+</html>

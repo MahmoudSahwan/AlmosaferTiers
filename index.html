@@ -1,0 +1,2667 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إطار المسافر - للإطارات والزيوت والبطاريات</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      id="bootstrap-css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- AOS (Animate On Scroll) Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-red: #d82e38;
+        --primary-red-hover: #b0222b;
+        --dark-color: #1a1a1a;
+        --light-color: #f9f9f9;
+        --text-color: #333;
+        --border-color: #e0e0e0;
+        --card-bg: #ffffff;
+      }
+
+      body.dark-mode {
+        --light-color: #121212;
+        --dark-color: #000000;
+        --text-color: #e0e0e0;
+        --card-bg: #1e1e1e;
+        --border-color: #444;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+        background-color: var(--light-color);
+        color: var(--text-color);
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* --- Global --- */
+      .section-padding {
+        padding: 60px 0;
+      }
+      .section-title {
+        font-weight: 800;
+        margin-bottom: 40px;
+        color: var(--dark-color);
+      }
+      body.dark-mode .section-title {
+        color: var(--primary-red);
+      }
+      .primary-text {
+        color: var(--primary-red);
+      }
+
+      .btn-red {
+        background-color: var(--primary-red);
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 12px 30px;
+        transition: all 0.3s;
+        border: 2px solid var(--primary-red);
+      }
+      .btn-red:hover {
+        background-color: var(--primary-red-hover);
+        color: white;
+        border-color: var(--primary-red-hover);
+        transform: translateY(-2px);
+      }
+      .btn-outline-red {
+        color: var(--primary-red);
+        background-color: transparent;
+        border: 2px solid var(--primary-red);
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 12px 30px;
+        transition: all 0.3s;
+      }
+      body.dark-mode .btn-outline-red {
+        color: #fff;
+        border-color: #fff;
+      }
+      .btn-outline-red:hover {
+        background-color: var(--primary-red);
+        color: #fff;
+        border-color: var(--primary-red);
+        transform: translateY(-2px);
+      }
+      body.dark-mode .btn-outline-red:hover {
+        color: #fff;
+      }
+
+      .btn-ai-tip {
+        font-size: 0.8rem;
+        font-weight: bold;
+        background: var(--primary-red);
+        border: none;
+        color: #fff;
+      }
+
+      /* --- Header & Navbar --- */
+      .top-header {
+        background-color: #000;
+        color: #fff;
+        padding: 5px 0;
+        font-size: 0.9rem;
+      }
+      .top-header a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+      .main-navbar {
+        background-color: var(--card-bg) !important;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        transition: background-color 0.3s;
+      }
+      .navbar-brand {
+        font-weight: 800;
+        color: var(--dark-color);
+      }
+      body.dark-mode .navbar-brand {
+        color: var(--light-color);
+      }
+      .navbar-brand .fa-road {
+        color: var(--primary-red);
+      }
+      html[lang="en"] .navbar-nav {
+        margin-left: auto !important;
+      }
+      .dark-mode-toggle {
+        cursor: pointer;
+        margin: 0 15px;
+        font-size: 1.2rem;
+        color: var(--text-color);
+      }
+      body.dark-mode .dark-mode-toggle {
+        color: #fff;
+      }
+
+      /* --- Hero Carousel Section --- */
+      #heroCarousel {
+        height: 90vh;
+        min-height: 750px;
+      }
+      .carousel-inner,
+      .carousel-item {
+        height: 100%;
+      }
+      .carousel-item {
+        background-size: cover;
+        background-position: center;
+      }
+      .carousel-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8),
+          rgba(0, 0, 0, 0.2)
+        );
+      }
+      .carousel-caption {
+        top: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        width: 90%;
+        left: 5%;
+        right: 5%;
+      }
+      .hero-form-container {
+        background-color: var(--card-bg);
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--border-color);
+      }
+      .form-select,
+      .form-control {
+        border-radius: 8px;
+        padding: 0.75rem;
+        background-color: var(--light-color);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+      }
+      .hero-form-container h4 {
+        font-weight: 800;
+        color: var(--text-color);
+        font-size: 1.2rem;
+      }
+      .hero-text-main h1,
+      .hero-slide-text h1 {
+        font-size: 3.2rem;
+        font-weight: 800;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      @media (max-width: 992px) {
+        .hero-text-main h1,
+        .hero-slide-text h1 {
+          font-size: 2.5rem;
+        }
+        .carousel-caption {
+          align-items: flex-end;
+          padding-bottom: 2rem;
+        }
+      }
+
+      /* --- Trusted Brands Slider --- */
+      @keyframes scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      #trusted-brands {
+        background: var(--card-bg);
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        padding: 2rem 0;
+      }
+      .logo-slider-container {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+      }
+      .logo-slider {
+        display: flex;
+        width: calc(
+          200px * 16
+        ); /* 200px per logo * 8 logos * 2 for duplication */
+        animation: scroll 40s linear infinite;
+      }
+      .logo-slider-container:hover .logo-slider {
+        animation-play-state: paused;
+      }
+      .logo-slide {
+        flex-shrink: 0;
+        width: 200px;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .logo-slide img {
+        max-width: 120px;
+        height: auto;
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+      .logo-slide:hover img {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      /* --- Smart Advisor Section --- */
+      #smart-advisor {
+        background-color: var(--light-color);
+      }
+      body.dark-mode #smart-advisor {
+        background-color: var(--dark-color);
+      }
+      .advisor-box {
+        background-color: var(--card-bg);
+        padding: 2rem;
+        border-radius: 15px;
+      }
+      .advisor-result {
+        background-color: var(--light-color);
+        color: var(--text-color);
+        padding: 1.5rem;
+        border-radius: 15px;
+        margin-top: 1.5rem;
+        min-height: 150px;
+      }
+      body.dark-mode .advisor-result {
+        background-color: #2a2a2a;
+      }
+      .advisor-result h5 {
+        color: var(--primary-red);
+        font-weight: bold;
+      }
+
+      /* --- New Special Offers Section --- */
+      #special-offers {
+        background-color: var(--light-color);
+      }
+      body.dark-mode #special-offers {
+        background-color: var(--dark-color);
+      }
+
+      .offer-banner {
+        background-color: var(--card-bg);
+        background-image: url("https://www.transparenttextures.com/patterns/subtle-white-feathers.png");
+        border-radius: 15px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-color);
+        min-height: 230px;
+      }
+      .offer-banner:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      .offer-banner-img {
+        max-width: 150px;
+        min-width: 120px;
+        margin-inline-end: 20px;
+        align-self: center;
+      }
+      .offer-banner-content {
+        flex-grow: 1;
+      }
+      .offer-banner-content h4 {
+        font-weight: 800;
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        color: var(--dark-color);
+      }
+      body.dark-mode .offer-banner-content h4 {
+        color: var(--light-color);
+      }
+      .offer-banner-content p {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+      }
+      .offer-banner .btn-red:hover {
+        background-color: var(--primary-red-hover);
+        border-color: var(--primary-red-hover);
+      }
+
+      #offersCarousel .carousel-indicators button {
+        background-color: #ccc;
+      }
+      #offersCarousel .carousel-indicators .active {
+        background-color: var(--primary-red);
+      }
+      #offersCarousel .carousel-inner {
+        padding-bottom: 40px; /* Space for indicators */
+      }
+
+      /* --- CTA Section --- */
+      #cta-section {
+        background: var(--primary-red);
+        color: #fff;
+        padding: 80px 0;
+      }
+      #cta-section .section-title {
+        color: #fff;
+      }
+      #cta-section .btn-white {
+        background-color: #fff;
+        color: var(--dark-color);
+        border-color: #fff;
+      }
+      #cta-section .btn-white:hover {
+        background-color: transparent;
+        color: #fff;
+        border-color: #fff;
+      }
+      #cta-section .btn-outline-white {
+        color: #fff;
+        border-color: #fff;
+      }
+      #cta-section .btn-outline-white:hover {
+        background-color: #fff;
+        color: var(--dark-color);
+        border-color: #fff;
+      }
+
+      /* --- Products Filter Section --- */
+      .product-filter-tabs .nav-link {
+        border: 0;
+        background: none;
+        color: var(--text-color);
+        font-weight: 600;
+        padding-bottom: 10px;
+        border-bottom: 4px solid transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.1rem;
+      }
+      .product-filter-tabs .nav-link .filter-icon {
+        font-size: 2rem;
+        background: var(--dark-color);
+        color: var(--primary-red);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+      body.dark-mode .product-filter-tabs .nav-link .filter-icon {
+        background: #333;
+        color: #fff;
+      }
+      .product-filter-tabs .nav-link.active,
+      .product-filter-tabs .nav-link:hover {
+        color: var(--primary-red);
+        border-bottom-color: var(--primary-red);
+      }
+      .product-filter-tabs .nav-link.active .filter-icon,
+      .product-filter-tabs .nav-link:hover .filter-icon {
+        background: var(--primary-red);
+        color: #fff;
+        transform: scale(1.1);
+      }
+      .tab-content .product-image {
+        max-height: 400px;
+      }
+
+      /* --- Our Services Section --- */
+      .service-card {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+      .service-card-icon {
+        font-size: 3rem;
+        color: var(--primary-red);
+        margin-bottom: 1rem;
+      }
+      .service-card h5 {
+        font-weight: 800;
+        color: var(--dark-color);
+      }
+      body.dark-mode .service-card h5 {
+        color: var(--light-color);
+      }
+      .service-card .btn {
+        margin-top: auto;
+      }
+
+      /* --- Testimonials Section --- */
+      .testimonial-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        padding: 2rem;
+        border-radius: 15px;
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+      .testimonial-img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1.5rem;
+        border: 4px solid var(--primary-red);
+      }
+      .testimonial-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+      }
+      .testimonial-name {
+        font-weight: 800;
+        color: var(--dark-color);
+        margin-bottom: 0.5rem;
+      }
+      body.dark-mode .testimonial-name {
+        color: var(--light-color);
+      }
+      .testimonial-rating {
+        color: #ffc107;
+      }
+      #testimonialCarousel .carousel-control-prev-icon,
+      #testimonialCarousel .carousel-control-next-icon {
+        filter: invert(0.5);
+      }
+      body.dark-mode #testimonialCarousel .carousel-control-prev-icon,
+      body.dark-mode #testimonialCarousel .carousel-control-next-icon {
+        filter: invert(1);
+      }
+
+      /* --- About Us Section --- */
+      #about-us .about-img {
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+      .about-list li {
+        padding-inline-start: 25px;
+        position: relative;
+        margin-bottom: 15px;
+      }
+      .about-list li i {
+        color: var(--primary-red);
+        position: absolute;
+        top: 5px;
+        inset-inline-start: 0;
+      }
+
+      /* --- Features Section --- */
+      .feature-box {
+        text-align: center;
+      }
+      .feature-icon {
+        font-size: 2.5rem;
+        color: var(--primary-red);
+        margin-bottom: 15px;
+      }
+      .feature-box h5 {
+        font-weight: 600;
+      }
+
+      /* --- Location & Contact Section --- */
+      .map-responsive-wrapper {
+        position: relative;
+        padding-bottom: 75%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 15px;
+      }
+      .map-responsive-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .contact-info-box {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 15px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        height: 100%;
+      }
+      .contact-info-box h4 {
+        font-weight: 800;
+        color: var(--dark-color);
+      }
+      body.dark-mode .contact-info-box h4 {
+        color: var(--light-color);
+      }
+      .contact-info-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+      .contact-info-item .icon {
+        font-size: 1.5rem;
+        color: var(--primary-red);
+        margin-inline-end: 15px;
+        width: 30px;
+      }
+
+      /* --- Footer --- */
+      .main-footer {
+        background-color: var(--dark-color);
+        color: #fff;
+      }
+      .main-footer h5 {
+        color: var(--primary-red);
+        font-weight: 800;
+      }
+      .main-footer a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .main-footer a:hover {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div>
+          <a href="tel:0568407283"><i class="fas fa-phone"></i> 0568407283</a
+          ><a
+            href="mailto:Aallmm737966975@gmail.com
+
+"
+            ><i class="fas fa-envelope"></i> Aallmm737966975@gmail.com
+          </a>
+        </div>
+        <div>
+          <a href="#"><i class="fab fa-facebook-f"></i></a
+          ><a href="#"><i class="fab fa-twitter"></i></a
+          ><a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Navbar -->
+    <nav class="navbar navbar-expand-lg main-navbar sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><i class="fas fa-road"></i>
+          <span data-lang-text="siteName">إطار المسافر</span></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" data-lang-text="navHome"
+                >الرئيسية</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about-us" data-lang-text="navAbout"
+                >عن الشركة</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#products" data-lang-text="navProducts"
+                >المنتجات</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#our-services"
+                data-lang-text="navServices"
+                >الخدمات</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#location" data-lang-text="navContact"
+                >تواصل معنا</a
+              >
+            </li>
+          </ul>
+          <div class="d-flex align-items-center">
+            <i id="darkModeToggle" class="fas fa-moon dark-mode-toggle"></i>
+            <button
+              id="langSwitcher"
+              class="btn btn-outline-secondary btn-sm"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Carousel Section -->
+    <section id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <!-- Slide 1: Form and Text -->
+        <div
+          class="carousel-item active"
+          style="background-image: url('/assets/slide1.jpg')"
+        >
+          <div class="carousel-caption">
+            <div class="container">
+              <div class="row align-items-center">
+                <div
+                  class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0 hero-text-main"
+                  data-aos="fade-right"
+                >
+                  <h1 class="text-white" data-lang-text="heroMainTitle">
+                    سلامة سيارتك تبدأ من هنا
+                  </h1>
+                  <p
+                    class="lead text-white-50"
+                    data-lang-text="heroMainSubtitle"
+                  >
+                    اطلب عرض سعر أو استشارة فنية مجانية لأفضل أنواع الإطارات،
+                    البطاريات، والزيوت. فريقنا جاهز لخدمتك.
+                  </p>
+                </div>
+                <div class="col-lg-5 offset-lg-1" data-aos="fade-left">
+                  <div class="hero-form-container">
+                    <h4 class="text-center mb-3" data-lang-text="heroFormTitle">
+                      اطلب عرض سعر سريع!
+                    </h4>
+                    <form
+                      id="contact-form"
+                      action="https://formspree.io/f/YOUR_UNIQUE_ID"
+                      method="POST"
+                    >
+                      <div class="row g-2">
+                        <div class="col-12">
+                          <input
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            data-lang-placeholder="fullName"
+                            required
+                          />
+                        </div>
+                        <div class="col-12">
+                          <input
+                            type="tel"
+                            name="phone"
+                            class="form-control"
+                            data-lang-placeholder="phone"
+                            required
+                          />
+                        </div>
+                        <div class="col-12">
+                          <input
+                            type="text"
+                            name="city"
+                            class="form-control"
+                            data-lang-placeholder="city"
+                            required
+                          />
+                        </div>
+                        <div class="col-12">
+                          <select
+                            name="contact_time"
+                            class="form-select"
+                            required
+                          >
+                            <option
+                              selected
+                              disabled
+                              value=""
+                              data-lang-text="contactTime"
+                            >
+                              أفضل وقت للتواصل...
+                            </option>
+                            <option
+                              value="Morning"
+                              data-lang-text="contactMorning"
+                            >
+                              صباحاً
+                            </option>
+                            <option
+                              value="Afternoon"
+                              data-lang-text="contactAfternoon"
+                            >
+                              ظهراً
+                            </option>
+                            <option
+                              value="Evening"
+                              data-lang-text="contactEvening"
+                            >
+                              مساءً
+                            </option>
+                            <option
+                              value="Anytime"
+                              data-lang-text="contactAnytime"
+                            >
+                              في أي وقت
+                            </option>
+                          </select>
+                        </div>
+                        <div class="col-12 mt-3">
+                          <button
+                            type="submit"
+                            class="btn btn-red w-100"
+                            data-lang-text="submitRequest"
+                          >
+                            إرسال الطلب
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2: Text Only -->
+        <div
+          class="carousel-item"
+          style="background-image: url('/assets/slide3.jpg')"
+        >
+          <div class="carousel-caption justify-content-center">
+            <div class="text-center hero-slide-text" data-aos="zoom-in">
+              <h1 class="text-white" data-lang-text="tiresSlideTitle">
+                أفضل الإطارات لسلامتك
+              </h1>
+              <p
+                class="lead text-white-50 mb-4"
+                data-lang-text="tiresSlideText"
+              >
+                تشكيلة واسعة من الماركات العالمية التي تثق بها.
+              </p>
+              <a
+                href="#products"
+                class="btn btn-red btn-lg"
+                data-lang-text="shopTires"
+                >تسوق الإطارات الآن</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3: Text Only -->
+        <div
+          class="carousel-item"
+          style="background-image: url('/assets/s;ide2.jpg')"
+        >
+          <div class="carousel-caption justify-content-center">
+            <div class="text-center hero-slide-text" data-aos="zoom-in">
+              <h1 class="text-white" data-lang-text="batteriesSlideTitle">
+                طاقة لا تنتهي لسيارتك
+              </h1>
+              <p
+                class="lead text-white-50 mb-4"
+                data-lang-text="batteriesSlideText"
+              >
+                اختر بطاريتك من أفضل الماركات العالمية المعتمدة.
+              </p>
+              <a
+                href="#products"
+                class="btn btn-red btn-lg"
+                data-lang-text="shopBatteries"
+                >اكتشف البطاريات</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span
+        ><span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span
+        ><span class="visually-hidden">Next</span>
+      </button>
+    </section>
+
+    <!-- Trusted Brands Section -->
+    <section id="trusted-brands">
+      <div class="logo-slider-container">
+        <div class="logo-slider">
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Michelin"
+              alt="Michelin"
+            />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Hankook"
+              alt="Hankook"
+            />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Bridgestone"
+              alt="Bridgestone"
+            />
+          </div>
+          <div class="logo-slide">
+            <img src="https://placehold.co/150x80/png?text=Bosch" alt="Bosch" />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=ACDelco"
+              alt="ACDelco"
+            />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Mobil+1"
+              alt="Mobil 1"
+            />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Castrol"
+              alt="Castrol"
+            />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Pirelli"
+              alt="Pirelli"
+            />
+          </div>
+          <!-- Duplicate for infinite loop -->
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Michelin"
+              alt="Michelin"
+            />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Hankook"
+              alt="Hankook"
+            />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Bridgestone"
+              alt="Bridgestone"
+            />
+          </div>
+          <div class="logo-slide">
+            <img src="https://placehold.co/150x80/png?text=Bosch" alt="Bosch" />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=ACDelco"
+              alt="ACDelco"
+            />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Mobil+1"
+              alt="Mobil 1"
+            />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Castrol"
+              alt="Castrol"
+            />
+          </div>
+          <div class="logo-slide">
+            <img
+              src="https://placehold.co/150x80/png?text=Pirelli"
+              alt="Pirelli"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Smart Advisor Section -->
+    <section id="smart-advisor" class="section-padding">
+      <div class="container">
+        <h2
+          class="section-title text-center"
+          data-aos="fade-down"
+          data-lang-text="advisorTitle"
+        >
+          ✨ مستشارك الذكي
+        </h2>
+        <div class="advisor-box col-lg-8 mx-auto" data-aos="fade-up">
+          <div class="row g-3 align-items-end">
+            <div class="col-md-6 col-lg-3">
+              <label
+                for="car-type"
+                class="form-label"
+                data-lang-text="carTypeLabel"
+                >نوع السيارة</label
+              >
+              <select id="car-type" class="form-select">
+                <option value="sedan" data-lang-text="carTypeSedan">
+                  سيدان
+                </option>
+                <option value="suv" data-lang-text="carTypeSuv">SUV</option>
+                <option value="truck" data-lang-text="carTypeTruck">
+                  شاحنة
+                </option>
+                <option value="sport" data-lang-text="carTypeSport">
+                  رياضية
+                </option>
+              </select>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <label
+                for="car-model"
+                class="form-label"
+                data-lang-text="carModelLabel"
+                >موديل السيارة</label
+              >
+              <input
+                type="text"
+                id="car-model"
+                class="form-control"
+                data-lang-placeholder="carModelPlaceholder"
+              />
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <label
+                for="driving-style"
+                class="form-label"
+                data-lang-text="drivingStyleLabel"
+                >أسلوب القيادة</label
+              >
+              <select id="driving-style" class="form-select">
+                <option value="city" data-lang-text="drivingStyleCity">
+                  داخل المدينة
+                </option>
+                <option value="highway" data-lang-text="drivingStyleHighway">
+                  طرق سريعة
+                </option>
+                <option value="mixed" data-lang-text="drivingStyleMixed">
+                  مختلط
+                </option>
+              </select>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <button
+                id="get-recommendation-btn"
+                class="btn btn-red w-100"
+                data-lang-text="getRecommendationBtn"
+              >
+                احصل على توصية
+              </button>
+            </div>
+          </div>
+          <div id="advisor-result-box" class="advisor-result d-none">
+            <!-- Result will be populated here by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section id="special-offers" class="section-padding">
+      <div class="container">
+        <h2
+          class="section-title text-center"
+          data-lang-text="specialOffers"
+          data-aos="fade-down"
+        >
+          عروض خاصة لا تفوت!
+        </h2>
+        <div
+          id="offersCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-aos="fade-up"
+        >
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#offersCarousel"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Offer 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#offersCarousel"
+              data-bs-slide-to="1"
+              aria-label="Offer 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#offersCarousel"
+              data-bs-slide-to="2"
+              aria-label="Offer 3"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <div class="row g-4">
+                <div class="col-lg-6">
+                  <div class="offer-banner">
+                    <img
+                      src="/assets/offers/1ac4a951-4072-4c7d-96cb-dfeb01380472.jpeg"
+                      alt="Tires Offer"
+                      class="img-fluid offer-banner-img"
+                    />
+                    <div class="offer-banner-content">
+                      <h4 data-lang-text="newOffer1Title">
+                        تخفيضات الإطارات الكبرى
+                      </h4>
+                      <p class="text-muted" data-lang-text="newOffer1Sub">
+                        خصم حتى 20% على ماركات مختارة
+                      </p>
+                      <a
+                        href="#"
+                        class="btn btn-red"
+                        data-lang-text="newOfferBtn"
+                        >اكتشف العرض</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="offer-banner">
+                    <img
+                      src="/assets/offers/62c84031-4767-4847-9fdf-09772dc345ec.jpeg"
+                      alt="Batteries Offer"
+                      class="img-fluid offer-banner-img"
+                    />
+                    <div class="offer-banner-content">
+                      <h4 data-lang-text="newOffer2Title">
+                        أفضل بطاريات السيارات
+                      </h4>
+                      <p class="text-muted" data-lang-text="newOffer2Sub">
+                        مع تركيب مجاني عند الشراء
+                      </p>
+                      <a
+                        href="#"
+                        class="btn btn-red"
+                        data-lang-text="newOfferBtn"
+                        >اكتشف العرض</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <div class="row g-4">
+                <div class="col-lg-6">
+                  <div class="offer-banner">
+                    <img
+                      src="/assets/offers/d9204431-7bef-4dc0-a3bd-bc33ff04ab69.jpeg"
+                      alt="Oils Offer"
+                      class="img-fluid offer-banner-img"
+                    />
+                    <div class="offer-banner-content">
+                      <h4 data-lang-text="newOffer3Title">
+                        عرض تغيير الزيت والفحص
+                      </h4>
+                      <p class="text-muted" data-lang-text="newOffer3Sub">
+                        فحص 10 نقاط مجاناً مع كل غيار زيت
+                      </p>
+                      <a
+                        href="#"
+                        class="btn btn-red"
+                        data-lang-text="newOfferBtn"
+                        >اكتشف العرض</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="offer-banner">
+                    <img
+                      src="/assets/offers/f8477e87-0225-4535-bd7c-2df3c2f94d20.jpeg"
+                      alt="Package Offer"
+                      class="img-fluid offer-banner-img"
+                    />
+                    <div class="offer-banner-content">
+                      <h4 data-lang-text="newOffer4Title">
+                        باقة العناية المتكاملة
+                      </h4>
+                      <p class="text-muted" data-lang-text="newOffer4Sub">
+                        إطارات، زيت، وفحص بسعر خاص
+                      </p>
+                      <a
+                        href="#"
+                        class="btn btn-red"
+                        data-lang-text="newOfferBtn"
+                        >اكتشف العرض</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+              <div class="row g-4">
+                <div class="col-lg-6">
+                  <div class="offer-banner">
+                    <img
+                      src="/assets/pic for carousel  (1).jpg"
+                      alt="Alignment Offer"
+                      class="img-fluid offer-banner-img"
+                    />
+                    <div class="offer-banner-content">
+                      <h4 data-lang-text="newOffer5Title">
+                        موازنة وترصيص مجاناً
+                      </h4>
+                      <p class="text-muted" data-lang-text="newOffer5Sub">
+                        عند شرائك 4 إطارات جديدة
+                      </p>
+                      <a
+                        href="#"
+                        class="btn btn-red"
+                        data-lang-text="newOfferBtn"
+                        >اكتشف العرض</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="offer-banner">
+                    <img
+                      src="/assets/pic for carousel  (2).jpg"
+                      alt="Family Offer"
+                      class="img-fluid offer-banner-img"
+                    />
+                    <div class="offer-banner-content">
+                      <h4 data-lang-text="newOffer6Title">العرض العائلي</h4>
+                      <p class="text-muted" data-lang-text="newOffer6Sub">
+                        خصم إضافي 10% على السيارة الثانية
+                      </p>
+                      <a
+                        href="#"
+                        class="btn btn-red"
+                        data-lang-text="newOfferBtn"
+                        >اكتشف العرض</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Filter Section -->
+    <section id="products" class="section-padding">
+      <div class="container">
+        <h2
+          class="section-title text-center"
+          data-lang-text="ourProducts"
+          data-aos="fade-down"
+        >
+          منتجاتنا
+        </h2>
+        <ul
+          class="nav nav-tabs justify-content-center mb-5 product-filter-tabs"
+          id="productFilter"
+          role="tablist"
+          data-aos="fade-up"
+        >
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="all-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#all-tab-pane"
+              type="button"
+            >
+              <span class="filter-icon"><i class="fas fa-star"></i></span
+              ><span data-lang-text="filterAll">الكل</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="tires-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#tires-tab-pane"
+              type="button"
+            >
+              <span class="filter-icon"><i class="fas fa-dot-circle"></i></span
+              ><span data-lang-text="filterTires">الإطارات</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="batteries-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#batteries-tab-pane"
+              type="button"
+            >
+              <span class="filter-icon"><i class="fas fa-car-battery"></i></span
+              ><span data-lang-text="filterBatteries">البطاريات</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="oils-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#oils-tab-pane"
+              type="button"
+            >
+              <span class="filter-icon"><i class="fas fa-oil-can"></i></span
+              ><span data-lang-text="filterOils">الزيوت</span>
+            </button>
+          </li>
+        </ul>
+
+        <div
+          class="tab-content"
+          id="productFilterContent"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <div
+            class="tab-pane fade show active"
+            id="all-tab-pane"
+            role="tabpanel"
+          >
+            <div class="row align-items-center">
+              <div class="col-lg-7">
+                <h3 data-lang-text="allTitle">أفضل الحلول لسيارتك</h3>
+                <p class="text-muted lead" data-lang-text="allText">
+                  في إطار المسافر نقدم تشكيلة متكاملة من أفضل الإطارات
+                  والبطاريات والزيوت العالمية.
+                </p>
+                <a href="/Product.html" class="btn btn-red" data-lang-text="browseAll"
+                  >تصفح كل المنتجات</a
+                >
+              </div>
+              <div class="col-lg-5 text-center">
+                <img
+                  src="/assets/mix.jpg"
+                  class="img-fluid rounded product-image"
+                  alt="All Products"
+                  onerror="this.onerror=null;this.src='https://placehold.co/400x350/1a1a1a/DAA520?text=Image';"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="tires-tab-pane" role="tabpanel">
+            <div class="row align-items-center">
+              <div class="col-lg-7">
+                <h3 data-lang-text="tiresTitle">إطارات لجميع أنواع الطرق</h3>
+                <p class="text-muted lead" data-lang-text="tiresText">
+                  اكتشف مجموعتنا الواسعة من الإطارات من أشهر الماركات العالمية.
+                </p>
+                <a href="#" class="btn btn-red" data-lang-text="browseTires"
+                  >عرض تشكيلة الإطارات</a
+                >
+              </div>
+              <div class="col-lg-5 text-center">
+                <img
+                  src="/assets/almohtarif-tires.com-1750293207229/tiers (3).webp"
+                  class="img-fluid rounded product-image"
+                  alt="Tires"
+                  onerror="this.onerror=null;this.src='https://placehold.co/400x350/DAA520/1a1a1a?text=Image';"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="batteries-tab-pane" role="tabpanel">
+            <div class="row align-items-center">
+              <div class="col-lg-7">
+                <h3 data-lang-text="batteriesTitle">
+                  بطاريات قوية لأداء موثوق
+                </h3>
+                <p class="text-muted lead" data-lang-text="batteriesText">
+                  نقدم بطاريات عالية الجودة تضمن لك بدء تشغيل سريع وأداء موثوق.
+                </p>
+                <a href="#" class="btn btn-red" data-lang-text="browseBatteries"
+                  >استكشف أنواع البطاريات</a
+                >
+              </div>
+              <div class="col-lg-5 text-center">
+                <img
+                  src="/assets/almohtarif-tires.com-1750293207229/5-380x380.png"
+                  class="img-fluid rounded product-image"
+                  alt="Batteries"
+                  onerror="this.onerror=null;this.src='https://placehold.co/400x350/1a1a1a/DAA520?text=Image';"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="oils-tab-pane" role="tabpanel">
+            <div class="row align-items-center">
+              <div class="col-lg-7">
+                <h3 data-lang-text="oilsTitle">أفضل الزيوت لصحة محرك سيارتك</h3>
+                <p class="text-muted lead" data-lang-text="oilsText">
+                  نقدم مجموعة واسعة من الزيوت التي تحافظ على أداء محرك سيارتك.
+                </p>
+                <a href="#" class="btn btn-red" data-lang-text="browseOils"
+                  >تصفح أنواع الزيوت</a
+                >
+              </div>
+              <div class="col-lg-5 text-center">
+                <img
+                  src="/assets/almohtarif-tires.com-1750293207229/2-450x450.png"
+                  class="img-fluid rounded product-image"
+                  alt="Oils"
+                  onerror="this.onerror=null;this.src='https://placehold.co/400x350/DAA520/1a1a1a?text=Image';"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta-section" class="section-padding">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7 text-center text-lg-start" data-aos="fade-right">
+            <h2 class="section-title mb-3" data-lang-text="ctaTitle">
+              هل أنت مستعد لترقية أداء سيارتك؟
+            </h2>
+            <p class="lead mb-4" data-lang-text="ctaSubtitle">
+              حدد موعدًا للخدمة أو اطلب عرض أسعار اليوم وجرب الفرق مع إطار
+              المسافر.
+            </p>
+            <div>
+              <button
+                class="btn btn-white me-2 mb-2 mb-md-0"
+                data-bs-toggle="modal"
+                data-bs-target="#whatsappModal"
+                data-lang-text="ctaBtnService"
+              >
+                اطلب خدمة
+              </button>
+              <a
+                href="tel:01023532759"
+                class="btn btn-outline-white mb-2 mb-md-0"
+                data-lang-text="ctaBtnCall"
+                >اتصل الآن</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left">
+            <img
+              src="/assets/slide1.jpg"
+              class="img-fluid rounded"
+              alt="Car Performance"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section id="our-services" class="section-padding bg-white">
+      <div class="container">
+        <h2
+          class="section-title text-center"
+          data-lang-text="ourServicesTitle"
+          data-aos="fade-down"
+        >
+          خدماتنا المتميزة
+        </h2>
+        <div class="row g-4">
+          <div
+            class="col-lg-3 col-md-6 d-flex"
+            data-aos="fade-up"
+            data-aos-delay="0"
+          >
+            <div class="service-card">
+              <div class="service-card-icon">
+                <i class="fas fa-dot-circle"></i>
+              </div>
+              <h5 data-lang-text="serviceCardTireTitle">تركيب الإطارات</h5>
+              <p class="text-muted" data-lang-text="serviceCardTireText">
+                خدمة تركيب احترافية وسريعة لجميع أنواع الإطارات.
+              </p>
+              <button
+                class="btn btn-sm btn-ai-tip"
+                data-bs-toggle="modal"
+                data-bs-target="#aiExpertModal"
+                data-service="tire installation"
+                data-lang-text="expertTipBtn"
+              >
+                ✨ نصيحة من الخبراء
+              </button>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 d-flex"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="service-card">
+              <div class="service-card-icon">
+                <i class="fas fa-car-battery"></i>
+              </div>
+              <h5 data-lang-text="serviceCardBatteryTitle">تغيير البطاريات</h5>
+              <p class="text-muted" data-lang-text="serviceCardBatteryText">
+                استبدال وفحص بطارية سيارتك بأيدي خبراء.
+              </p>
+              <button
+                class="btn btn-sm btn-ai-tip"
+                data-bs-toggle="modal"
+                data-bs-target="#aiExpertModal"
+                data-service="battery replacement"
+                data-lang-text="expertTipBtn"
+              >
+                ✨ نصيحة من الخبراء
+              </button>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 d-flex"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="service-card">
+              <div class="service-card-icon">
+                <i class="fas fa-oil-can"></i>
+              </div>
+              <h5 data-lang-text="serviceCardOilTitle">تغيير الزيوت</h5>
+              <p class="text-muted" data-lang-text="serviceCardOilText">
+                استخدام أفضل أنواع الزيوت الموصى بها لسيارتك.
+              </p>
+              <button
+                class="btn btn-sm btn-ai-tip"
+                data-bs-toggle="modal"
+                data-bs-target="#aiExpertModal"
+                data-service="oil change"
+                data-lang-text="expertTipBtn"
+              >
+                ✨ نصيحة من الخبراء
+              </button>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 d-flex"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="service-card">
+              <div class="service-card-icon"><i class="fas fa-cogs"></i></div>
+              <h5 data-lang-text="serviceCardBalanceTitle">موازنة العجلات</h5>
+              <p class="text-muted" data-lang-text="serviceCardBalanceText">
+                لضمان قيادة آمنة ومريحة وإطالة عمر إطاراتك.
+              </p>
+              <button
+                class="btn btn-sm btn-ai-tip"
+                data-bs-toggle="modal"
+                data-bs-target="#aiExpertModal"
+                data-service="wheel alignment"
+                data-lang-text="expertTipBtn"
+              >
+                ✨ نصيحة من الخبراء
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-padding">
+      <div class="container">
+        <h2
+          class="section-title text-center"
+          data-lang-text="testimonialsTitle"
+          data-aos="fade-down"
+        >
+          ماذا يقول عملاؤنا؟
+        </h2>
+        <div
+          id="testimonialCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-aos="fade-up"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="testimonial-card">
+                <img
+                  src="https://i.pravatar.cc/100?img=1"
+                  alt="Customer 1"
+                  class="testimonial-img"
+                />
+                <p
+                  class="testimonial-text fst-italic"
+                  data-lang-text="testimonial1Text"
+                >
+                  "خدمة سريعة وتركيب احترافي في موقعي مباشرة. فريق العمل محترم
+                  جداً والأسعار منافسة. أنصح بهم بشدة!"
+                </p>
+                <h5 class="testimonial-name" data-lang-text="testimonial1Name">
+                  عبدالله السالم
+                </h5>
+                <div class="testimonial-rating">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-card">
+                <img
+                  src="https://i.pravatar.cc/100?img=2"
+                  alt="Customer 2"
+                  class="testimonial-img"
+                />
+                <p
+                  class="testimonial-text fst-italic"
+                  data-lang-text="testimonial2Text"
+                >
+                  "عروضهم ممتازة، اشتريت إطارات هانكوك بعرض رائع لم أجده في أي
+                  مكان آخر. شكراً إطار المسافر."
+                </p>
+                <h5 class="testimonial-name" data-lang-text="testimonial2Name">
+                  محمد الغامدي
+                </h5>
+                <div class="testimonial-rating">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span
+            ><span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span
+            ><span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about-us" class="section-padding bg-white">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6" data-aos="fade-left">
+            <img
+              src="/assets/copany1.jpg"
+              class="img-fluid about-img"
+              alt="About Almusafir Tires"
+            />
+          </div>
+          <div class="col-lg-6" data-aos="fade-right">
+            <h2 class="section-title" data-lang-text="aboutTitle">
+              نبذة عن إطار المسافر
+            </h2>
+            <p
+              class="text-muted"
+              data-lang-text="aboutText"
+              id="about-text-content"
+            >
+              نحن في إطار المسافر لسنا مجرد متجر لبيع الإطارات والبطاريات، بل
+              شريكك الموثوق على الطريق. بخبرة تمتد لسنوات، نسعى لتقديم أفضل
+              المنتجات والخدمات التي تضمن سلامتك وراحة بالك.
+            </p>
+            <ul class="list-unstyled about-list">
+              <li>
+                <i class="fas fa-check-circle"></i
+                ><span data-lang-text="aboutListItem1"
+                  >وكلاء معتمدون لأشهر الماركات العالمية.</span
+                >
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i
+                ><span data-lang-text="aboutListItem2"
+                  >فريق من الفنيين الخبراء لخدمتك في أي وقت.</span
+                >
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i
+                ><span data-lang-text="aboutListItem3"
+                  >خدمة التركيب والصيانة في موقعك لتوفير وقتك وجهدك.</span
+                >
+              </li>
+            </ul>
+            <button
+              class="btn btn-red mt-3"
+              data-bs-toggle="modal"
+              data-bs-target="#whyUsModal"
+              data-lang-text="whyUsBtn"
+            >
+              ✨ لماذا تختارنا؟
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="row text-center g-4">
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="0">
+            <div class="feature-box">
+              <div class="feature-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <h5 data-lang-text="feature1Title">تركيب في موقعك</h5>
+              <p class="text-muted" data-lang-text="feature1Text">
+                نصلك أينما كنت.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-box">
+              <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+              <h5 data-lang-text="feature2Title">ضمان معتمد</h5>
+              <p class="text-muted" data-lang-text="feature2Text">
+                منتجاتنا وخدماتنا مضمونة.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-box">
+              <div class="feature-icon">
+                <i class="fas fa-hand-holding-usd"></i>
+              </div>
+              <h5 data-lang-text="feature3Title">الدفع عند الاستلام</h5>
+              <p class="text-muted" data-lang-text="feature3Text">
+                خيارات دفع مرنة وآمنة.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-box">
+              <div class="feature-icon"><i class="fas fa-headset"></i></div>
+              <h5 data-lang-text="feature4Title">دعم فني متميز</h5>
+              <p class="text-muted" data-lang-text="feature4Text">
+                فريقنا جاهز للمساعدة.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section id="location" class="section-padding bg-white">
+      <div class="container">
+        <h2
+          class="section-title text-center"
+          data-lang-text="locationTitle"
+          data-aos="fade-down"
+        >
+          موقعنا وتواصل معنا
+        </h2>
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-7" data-aos="fade-left">
+            <div class="map-responsive-wrapper">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d463878.028242491!2d46.542490538743734!3d24.72497992983768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2sRiyadh%20Saudi%20Arabia!5e0!3m2!1sen!2seg!4v1688555555555"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+          <div class="col-lg-5" data-aos="fade-right">
+            <div class="contact-info-box d-flex flex-column">
+              <h4 class="mb-4" data-lang-text="branchInfo">
+                معلومات الفرع الرئيسي
+              </h4>
+              <div class="contact-info-item">
+                <div class="icon"><i class="fas fa-map-marked-alt"></i></div>
+                <div>
+                  <strong data-lang-text="addressTitle">العنوان</strong>
+                  <p class="mb-0" data-lang-text="addressText">
+                     المملكة العربية
+                    السعودية
+                  </p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="icon"><i class="fas fa-clock"></i></div>
+                <div>
+                  <strong data-lang-text="hoursTitle">أوقات العمل</strong>
+                  <p class="mb-0" data-lang-text="hoursText">
+                    السبت - الخميس: 9:00 ص - 10:00 م<br />الجمعة: مغلق
+                  </p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                <div>
+                  <strong data-lang-text="contactInfoTitle">للتواصل</strong>
+                  <p class="mb-0">0568407283</p>
+                </div>
+              </div>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=Riyadh"
+                target="_blank"
+                class="btn btn-red w-100 mt-auto"
+              >
+                <i class="fas fa-directions me-2"></i>
+                <span data-lang-text="getDirectionsBtn"
+                  >الحصول على الاتجاهات</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer section-padding pb-4">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4" data-aos="fade-up">
+            <h5>
+              <i class="fas fa-road"></i>
+              <span data-lang-text="siteName">إطار المسافر</span>
+            </h5>
+            <p data-lang-text="footerAbout">
+              وجهتك الأولى لكل ما يتعلق بإطارات وبطاريات وزيوت السيارات في
+              المملكة.
+            </p>
+          </div>
+          <div class="col-lg-2" data-aos="fade-up" data-aos-delay="100">
+            <h5 data-lang-text="quickLinks">روابط سريعة</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" data-lang-text="navHome">الرئيسية</a></li>
+              <li>
+                <a href="#about-us" data-lang-text="navAbout">عن الشركة</a>
+              </li>
+              <li>
+                <a href="#our-services" data-lang-text="navServices">الخدمات</a>
+              </li>
+              <li>
+                <a href="#location" data-lang-text="navContact">تواصل معنا</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <h5 data-lang-text="ourServices">خدماتنا</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" data-lang-text="serviceTires">بيع الإطارات</a>
+              </li>
+              <li>
+                <a href="#" data-lang-text="serviceBatteries">بيع البطاريات</a>
+              </li>
+              <li><a href="#" data-lang-text="serviceOils">تغيير الزيوت</a></li>
+              <li>
+                <a href="#" data-lang-text="serviceCheckup">فحص وصيانة</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <h5 data-lang-text="contactUs">تواصل معنا</h5>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-map-marker-alt me-2"></i>
+                <span data-lang-text="address"
+                  >الرياض، المملكة العربية السعودية</span
+                >
+              </li>
+              <li><i class="fas fa-phone me-2"></i> 0568407283</li>
+              <li>
+                <i class="fas fa-envelope me-2"></i> Aallmm737966975@gmail.com
+
+
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <div class="text-center">
+          <p data-lang-text="copyright">
+            &copy; 2024 إطار المسافر. جميع الحقوق محفوظة.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- AI Expert Tip Modal -->
+    <div
+      class="modal fade"
+      id="aiExpertModal"
+      tabindex="-1"
+      aria-labelledby="aiExpertModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="aiExpertModalLabel"
+              data-lang-text="expertTipTitle"
+            >
+              ✨ نصيحة الخبراء
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="ai-tip-body">
+            <!-- AI tip will be loaded here -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              data-lang-text="closeBtn"
+            >
+              إغلاق
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Us Modal -->
+    <div
+      class="modal fade"
+      id="whyUsModal"
+      tabindex="-1"
+      aria-labelledby="whyUsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="whyUsModalLabel"
+              data-lang-text="whyUsTitle"
+            >
+              ✨ لماذا تختار إطار المسافر؟
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="why-us-body">
+            <!-- "Why Us" pitch will be loaded here -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              data-lang-text="closeBtn"
+            >
+              إغلاق
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp Service Request Modal -->
+    <div
+      class="modal fade"
+      id="whatsappModal"
+      tabindex="-1"
+      aria-labelledby="whatsappModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="whatsappModalLabel"
+              data-lang-text="whatsappModalTitle"
+            >
+              طلب خدمة عبر واتساب
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="whatsapp-form">
+              <div class="mb-3">
+                <label
+                  for="whatsapp-name"
+                  class="form-label"
+                  data-lang-text="fullName"
+                  >الاسم الكامل</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="whatsapp-name"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label
+                  for="whatsapp-phone"
+                  class="form-label"
+                  data-lang-text="phone"
+                  >رقم الهاتف</label
+                >
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="whatsapp-phone"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label
+                  for="whatsapp-service"
+                  class="form-label"
+                  data-lang-text="serviceRequiredLabel"
+                  >الخدمة المطلوبة</label
+                >
+                <select class="form-select" id="whatsapp-service" required>
+                  <option
+                    value="تركيب إطارات"
+                    data-lang-text="serviceTireInstallation"
+                  >
+                    تركيب إطارات
+                  </option>
+                  <option
+                    value="تغيير بطارية"
+                    data-lang-text="serviceBatteryReplacement"
+                  >
+                    تغيير بطارية
+                  </option>
+                  <option value="تغيير زيت" data-lang-text="serviceOilChange">
+                    تغيير زيت
+                  </option>
+                  <option
+                    value="موازنة عجلات"
+                    data-lang-text="serviceWheelAlignment"
+                  >
+                    موازنة عجلات
+                  </option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              data-lang-text="closeBtn"
+            >
+              إغلاق
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              id="send-whatsapp-btn"
+            >
+              <i class="fab fa-whatsapp"></i>
+              <span data-lang-text="sendOnWhatsApp">أرسل عبر واتساب</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize AOS
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 50,
+        });
+
+        const translations = {
+          ar: {
+            langBtn: "English",
+            siteName: "إطار المسافر",
+            navHome: "الرئيسية",
+            navAbout: "عن الشركة",
+            navProducts: "المنتجات",
+            navServices: "الخدمات",
+            navContact: "تواصل معنا",
+            heroMainTitle: "سلامة سيارتك تبدأ من هنا",
+            heroMainSubtitle:
+              "اطلب عرض سعر أو استشارة فنية مجانية لأفضل أنواع الإطارات، البطاريات، والزيوت. فريقنا جاهز لخدمتك.",
+            heroFormTitle: "اطلب عرض سعر سريع!",
+            fullName: "الاسم الكامل",
+            phone: "رقم الهاتف",
+            city: "المدينة",
+            contactTime: "أفضل وقت للتواصل...",
+            contactMorning: "صباحاً",
+            contactAfternoon: "ظهراً",
+            contactEvening: "مساءً",
+            contactAnytime: "في أي وقت",
+            submitRequest: "إرسال الطلب",
+            advisorTitle: "✨ مستشارك الذكي",
+            carTypeLabel: "نوع السيارة",
+            carModelLabel: "موديل السيارة",
+            carModelPlaceholder: "مثال: كامري",
+            drivingStyleLabel: "أسلوب القيادة",
+            getRecommendationBtn: "احصل على توصية",
+            carTypeSedan: "سيدان",
+            carTypeSuv: "SUV",
+            carTypeTruck: "شاحنة",
+            carTypeSport: "رياضية",
+            drivingStyleCity: "داخل المدينة",
+            drivingStyleHighway: "طرق سريعة",
+            drivingStyleMixed: "مختلط",
+            tiresRecommendation: "توصية الإطارات",
+            batteryRecommendation: "توصية البطارية",
+            ctaTitle: "هل أنت مستعد لترقية أداء سيارتك؟",
+            ctaSubtitle:
+              "حدد موعدًا للخدمة أو اطلب عرض أسعار اليوم وجرب الفرق مع إطار المسافر.",
+            ctaBtnService: "اطلب خدمة",
+            ctaBtnCall: "اتصل الآن",
+            tiresSlideTitle: "أفضل الإطارات لسلامتك",
+            tiresSlideText: "تشكيلة واسعة من الماركات العالمية التي تثق بها.",
+            shopTires: "تسوق الإطارات الآن",
+            batteriesSlideTitle: "طاقة لا تنتهي لسيارتك",
+            batteriesSlideText:
+              "اختر بطاريتك من أفضل الماركات العالمية المعتمدة.",
+            shopBatteries: "اكتشف البطاريات",
+            specialOffers: "عروض خاصة لا تفوت!",
+            newOffer1Title: "تخفيضات الإطارات الكبرى",
+            newOffer1Sub: "خصم حتى 20% على ماركات مختارة",
+            newOffer2Title: "أفضل بطاريات السيارات",
+            newOffer2Sub: "مع تركيب مجاني عند الشراء",
+            newOffer3Title: "عرض تغيير الزيت والفحص",
+            newOffer3Sub: "فحص 10 نقاط مجاناً مع كل غيار زيت",
+            newOffer4Title: "باقة العناية المتكاملة",
+            newOffer4Sub: "إطارات، زيت، وفحص بسعر خاص",
+            newOffer5Title: "موازنة وترصيص مجاناً",
+            newOffer5Sub: "عند شرائك 4 إطارات جديدة",
+            newOffer6Title: "العرض العائلي",
+            newOffer6Sub: "خصم إضافي 10% على السيارة الثانية",
+            newOfferBtn: "اكتشف العرض",
+            ourProducts: "منتجاتنا",
+            filterAll: "الكل",
+            filterTires: "الإطارات",
+            filterBatteries: "البطاريات",
+            filterOils: "الزيوت",
+            allTitle: "أفضل الحلول لسيارتك",
+            allText:
+              "في إطار المسافر نقدم تشكيلة متكاملة من أفضل الإطارات والبطاريات والزيوت العالمية.",
+            browseAll: "تصفح كل المنتجات",
+            tiresTitle: "إطارات لجميع أنواع الطرق",
+            tiresText:
+              "اكتشف مجموعتنا الواسعة من الإطارات من أشهر الماركات العالمية.",
+            browseTires: "عرض تشكيلة الإطارات",
+            batteriesTitle: "بطاريات قوية لأداء موثوق",
+            batteriesText:
+              "نقدم بطاريات عالية الجودة تضمن لك بدء تشغيل سريع وأداء موثوق.",
+            browseBatteries: "استكشف أنواع البطاريات",
+            oilsTitle: "أفضل الزيوت لصحة محرك سيارتك",
+            oilsText:
+              "نقدم مجموعة واسعة من الزيوت التي تحافظ على أداء محرك سيارتك.",
+            browseOils: "تصفح أنواع الزيوت",
+            ourServicesTitle: "خدماتنا المتميزة",
+            serviceCardTireTitle: "تركيب الإطارات",
+            serviceCardTireText:
+              "خدمة تركيب احترافية وسريعة لجميع أنواع الإطارات.",
+            serviceCardBatteryTitle: "تغيير البطاريات",
+            serviceCardBatteryText: "استبدال وفحص بطارية سيارتك بأيدي خبراء.",
+            serviceCardOilTitle: "تغيير الزيوت",
+            serviceCardOilText: "استخدام أفضل أنواع الزيوت الموصى بها لسيارتك.",
+            serviceCardBalanceTitle: "موازنة العجلات",
+            serviceCardBalanceText:
+              "لضمان قيادة آمنة ومريحة وإطالة عمر إطاراتك.",
+            expertTipBtn: "✨ نصيحة من الخبراء",
+            expertTipTitle: "✨ نصيحة الخبراء",
+            whyUsBtn: "✨ لماذا تختارنا؟",
+            whyUsTitle: "✨ لماذا تختار إطار المسافر؟",
+            closeBtn: "إغلاق",
+            loading: "جاري التحميل...",
+            geminiError: "عذراً، حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+            whatsappModalTitle: "طلب خدمة عبر واتساب",
+            serviceRequiredLabel: "الخدمة المطلوبة",
+            serviceTireInstallation: "تركيب إطارات",
+            serviceBatteryReplacement: "تغيير بطارية",
+            serviceOilChange: "تغيير زيت",
+            serviceWheelAlignment: "موازنة عجلات",
+            sendOnWhatsApp: "أرسل عبر واتساب",
+            testimonialsTitle: "ماذا يقول عملاؤنا؟",
+            testimonial1Text:
+              '"خدمة سريعة وتركيب احترافي في موقعي مباشرة. فريق العمل محترم جداً والأسعار منافسة. أنصح بهم بشدة!"',
+            testimonial1Name: "عبدالله السالم",
+            testimonial2Text:
+              '"عروضهم ممتازة، اشتريت إطارات هانكوك بعرض رائع لم أجده في أي مكان آخر. شكراً إطار المسافر."',
+            testimonial2Name: "محمد الغامدي",
+            aboutTitle: "نبذة عن إطار المسافر",
+            aboutText:
+              "نحن في إطار المسافر لسنا مجرد متجر لبيع الإطارات والبطاريات، بل شريكك الموثوق على الطريق. بخبرة تمتد لسنوات، نسعى لتقديم أفضل المنتجات والخدمات التي تضمن سلامتك وراحة بالك.",
+            aboutListItem1: "وكلاء معتمدون لأشهر الماركات العالمية.",
+            aboutListItem2: "فريق من الفنيين الخبراء لخدمتك في أي وقت.",
+            aboutListItem3: "خدمة التركيب والصيانة في موقعك لتوفير وقتك وجهدك.",
+            feature1Title: "تركيب في موقعك",
+            feature1Text: "نصلك أينما كنت.",
+            feature2Title: "ضمان معتمد",
+            feature2Text: "منتجاتنا وخدماتنا مضمونة.",
+            feature3Title: "الدفع عند الاستلام",
+            feature3Text: "خيارات دفع مرنة وآمنة.",
+            feature4Title: "دعم فني متميز",
+            feature4Text: "فريقنا جاهز للمساعدة.",
+            locationTitle: "موقعنا وتواصل معنا",
+            branchInfo: "معلومات الفرع الرئيسي",
+            addressTitle: "العنوان",
+            addressText:
+              "طريق الملك فهد، حي العليا، الرياض 12333، المملكة العربية السعودية",
+            hoursTitle: "أوقات العمل",
+            hoursText: "السبت - الخميس: 9:00 ص - 10:00 م<br>الجمعة: مغلق",
+            contactInfoTitle: "للتواصل",
+            getDirectionsBtn: "الحصول على الاتجاهات",
+            footerAbout:
+              "وجهتك الأولى لكل ما يتعلق بإطارات وبطاريات وزيوت السيارات في المملكة.",
+            quickLinks: "روابط سريعة",
+            footerAboutLink: "عن الشركة",
+            ourServices: "خدماتنا",
+            serviceTires: "بيع الإطارات",
+            serviceBatteries: "بيع البطاريات",
+            serviceOils: "تغيير الزيوت",
+            serviceCheckup: "فحص وصيانة",
+            contactUs: "تواصل معنا",
+            address: "الرياض، المملكة العربية السعودية",
+            copyright: "&copy; 2024 إطار المسافر. جميع الحقوق محفوظة.",
+          },
+          en: {
+            langBtn: "العربية",
+            siteName: "Almusafir Tire",
+            navHome: "Home",
+            navAbout: "About Us",
+            navProducts: "Products",
+            navServices: "Services",
+            navContact: "Contact Us",
+            heroMainTitle: "Your Car's Safety Starts Here",
+            heroMainSubtitle:
+              "Request a quote or a free technical consultation for the best tires, batteries, and oils. Our team is ready to serve you.",
+            heroFormTitle: "Get a Quick Quote!",
+            fullName: "Full Name",
+            phone: "Phone Number",
+            city: "City",
+            contactTime: "Preferred Contact Time...",
+            contactMorning: "Morning",
+            contactAfternoon: "Afternoon",
+            contactEvening: "Evening",
+            contactAnytime: "Anytime",
+            submitRequest: "Submit Request",
+            advisorTitle: "✨ Your Smart Advisor",
+            carTypeLabel: "Car Type",
+            carModelLabel: "Car Model",
+            carModelPlaceholder: "e.g., Camry",
+            drivingStyleLabel: "Driving Style",
+            getRecommendationBtn: "Get Recommendation",
+            carTypeSedan: "Sedan",
+            carTypeSuv: "SUV",
+            carTypeTruck: "Truck",
+            carTypeSport: "Sport",
+            drivingStyleCity: "City",
+            drivingStyleHighway: "Highway",
+            drivingStyleMixed: "Mixed",
+            tiresRecommendation: "Tires Recommendation",
+            batteryRecommendation: "Battery Recommendation",
+            ctaTitle: "Ready to upgrade your vehicle's performance?",
+            ctaSubtitle:
+              "Schedule a service appointment or request a quote today and experience the Almusafir difference.",
+            ctaBtnService: "Schedule Service",
+            ctaBtnCall: "Call Now",
+            tiresSlideTitle: "The Best Tires for Your Safety",
+            tiresSlideText: "A wide range of international brands you trust.",
+            shopTires: "Shop Tires Now",
+            batteriesSlideTitle: "Endless Power for Your Car",
+            batteriesSlideText:
+              "Choose your battery from the best certified international brands.",
+            shopBatteries: "Discover Batteries",
+            specialOffers: "Don't Miss Our Special Offers!",
+            newOffer1Title: "Major Tire Discounts",
+            newOffer1Sub: "Up to 20% off on selected brands",
+            newOffer2Title: "Best Car Batteries",
+            newOffer2Sub: "With free installation on purchase",
+            newOffer3Title: "Oil Change & Checkup Offer",
+            newOffer3Sub: "Free 10-point check with every oil change",
+            newOffer4Title: "Complete Care Package",
+            newOffer4Sub: "Tires, oil, and checkup at a special price",
+            newOffer5Title: "Free Balancing & Alignment",
+            newOffer5Sub: "When you buy 4 new tires",
+            newOffer6Title: "The Family Offer",
+            newOffer6Sub: "Extra 10% discount on the second car",
+            newOfferBtn: "Discover Offer",
+            ourProducts: "Our Products",
+            filterAll: "All",
+            filterTires: "Tires",
+            filterBatteries: "Batteries",
+            filterOils: "Oils",
+            allTitle: "The Best Solutions for Your Car",
+            allText:
+              "At Almusafir Tire, we offer an integrated range of the best international tires, batteries, and oils.",
+            browseAll: "Browse All Products",
+            tiresTitle: "Tires for All Road Types",
+            tiresText:
+              "Discover our wide range of tires from the most famous international brands.",
+            browseTires: "View Tire Collection",
+            batteriesTitle: "Powerful Batteries for Reliable Performance",
+            batteriesText:
+              "We offer high-quality batteries that ensure a quick start and reliable performance.",
+            browseBatteries: "Explore Battery Types",
+            oilsTitle: "The Best Oils for Your Engine's Health",
+            oilsText:
+              "We offer a wide range of oils that maintain your car's engine performance.",
+            browseOils: "Browse Oil Types",
+            ourServicesTitle: "Our Excellent Services",
+            serviceCardTireTitle: "Tire Installation",
+            serviceCardTireText:
+              "Professional and fast installation service for all tire types.",
+            serviceCardBatteryTitle: "Battery Replacement",
+            serviceCardBatteryText:
+              "Replacement and inspection of your car battery by experts.",
+            serviceCardOilTitle: "Oil Change",
+            serviceCardOilText:
+              "Using the best recommended types of oil for your car.",
+            serviceCardBalanceTitle: "Wheel Alignment",
+            serviceCardBalanceText:
+              "To ensure safe, comfortable driving and extend tire life.",
+            expertTipBtn: "✨ Expert Tip",
+            expertTipTitle: "✨ Expert Tip",
+            whyUsBtn: "✨ Why Choose Us?",
+            whyUsTitle: "✨ Why Choose Almusafir Tire?",
+            closeBtn: "Close",
+            loading: "Loading...",
+            geminiError: "Sorry, something went wrong. Please try again.",
+            whatsappModalTitle: "Request Service via WhatsApp",
+            serviceRequiredLabel: "Service Required",
+            serviceTireInstallation: "Tire Installation",
+            serviceBatteryReplacement: "Battery Replacement",
+            serviceOilChange: "Oil Change",
+            serviceWheelAlignment: "Wheel Alignment",
+            sendOnWhatsApp: "Send via WhatsApp",
+            testimonialsTitle: "What Our Customers Say",
+            testimonial1Text:
+              '"Fast service and professional on-site installation. The team is very respectful and the prices are competitive. Highly recommended!"',
+            testimonial1Name: "Abdullah Al-Salem",
+            testimonial2Text:
+              '"Their offers are excellent. I bought Hankook tires with a great deal I couldn\'t find anywhere else. Thanks, Almusafir Tire."',
+            testimonial2Name: "Mohammed Al-Ghamdi",
+            aboutTitle: "About Almusafir Tire",
+            aboutText:
+              "At Almusafir Tire, we are not just a tire and battery shop; we are your trusted partner on the road. With years of experience, we strive to provide the best products and services that ensure your safety and peace of mind.",
+            aboutListItem1:
+              "Authorized dealers for the most famous international brands.",
+            aboutListItem2:
+              "A team of expert technicians to serve you at any time.",
+            aboutListItem3:
+              "On-site installation and maintenance to save you time and effort.",
+            feature1Title: "On-site Installation",
+            feature1Text: "We come to you wherever you are.",
+            feature2Title: "Certified Warranty",
+            feature2Text: "Our products and services are guaranteed.",
+            feature3Title: "Cash on Delivery",
+            feature3Text: "Flexible and secure payment options.",
+            feature4Title: "Excellent Technical Support",
+            feature4Text: "Our team is ready to help.",
+            locationTitle: "Our Location & Contact",
+            branchInfo: "Main Branch Information",
+            addressTitle: "Address",
+            addressText: " Saudi Arabia",
+            hoursTitle: "Working Hours",
+            hoursText: "Sat - Thu: 9:00 AM - 10:00 PM<br>Friday: Closed",
+            contactInfoTitle: "Contact Info",
+            getDirectionsBtn: "Get Directions",
+            footerAbout:
+              "Your first destination for everything related to car tires, batteries, and oils in the Kingdom.",
+            quickLinks: "Quick Links",
+            footerAboutLink: "About Us",
+            ourServices: "Our Services",
+            serviceTires: "Tire Sales",
+            serviceBatteries: "Battery Sales",
+            serviceOils: "Oil Change",
+            serviceCheckup: "Checkup & Maintenance",
+            contactUs: "Contact Us",
+            address: "Riyadh, Saudi Arabia",
+            copyright: "&copy; 2024 Almusafir Tire. All Rights Reserved.",
+          },
+        };
+
+        let currentLanguage = localStorage.getItem("pageLanguage") || "ar";
+        const bootstrapRtl =
+          "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css";
+        const bootstrapLtr =
+          "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css";
+        const body = document.body;
+        const darkModeToggle = document.getElementById("darkModeToggle");
+
+        const setLanguage = (lang) => {
+          currentLanguage = lang;
+          localStorage.setItem("pageLanguage", lang);
+          const t = translations[lang];
+
+          document.documentElement.lang = lang;
+          document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+          document.getElementById("bootstrap-css").href =
+            lang === "ar" ? bootstrapRtl : bootstrapLtr;
+
+          document.querySelectorAll("[data-lang-text]").forEach((el) => {
+            const key = el.dataset.langText;
+            if (t[key]) el.innerHTML = t[key];
+          });
+
+          document
+            .querySelectorAll("input[data-lang-placeholder]")
+            .forEach((el) => {
+              const key = el.dataset.langPlaceholder;
+              if (t[key]) el.placeholder = t[key];
+            });
+
+          document.querySelectorAll("label[data-lang-text]").forEach((el) => {
+            const key = el.dataset.langText;
+            if (t[key]) el.textContent = t[key];
+          });
+
+          document.getElementById("langSwitcher").textContent = t.langBtn;
+        };
+
+        const setDarkMode = (isDark) => {
+          body.classList.toggle("dark-mode", isDark);
+          darkModeToggle.classList.toggle("fa-sun", isDark);
+          darkModeToggle.classList.toggle("fa-moon", !isDark);
+          localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+        };
+
+        document
+          .getElementById("langSwitcher")
+          .addEventListener("click", () => {
+            const newLang = currentLanguage === "ar" ? "en" : "ar";
+            setLanguage(newLang);
+          });
+
+        if (darkModeToggle) {
+          darkModeToggle.addEventListener("click", () => {
+            setDarkMode(!body.classList.contains("dark-mode"));
+          });
+        }
+
+        // Initial load
+        setLanguage(currentLanguage);
+        if (localStorage.getItem("darkMode") === "enabled") {
+          setDarkMode(true);
+        }
+
+        // --- Gemini API Integration ---
+        const apiKey = "AIzaSyDcLx42JX-1W4f30aU_knklEHAiNSecUn0"; // API key will be provided by the environment
+
+        async function callGemini(prompt) {
+          const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+          try {
+            const response = await fetch(apiUrl, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                contents: [{ parts: [{ text: prompt }] }],
+              }),
+            });
+
+            if (!response.ok) {
+              throw new Error(
+                `API call failed with status: ${response.status}`
+              );
+            }
+
+            const result = await response.json();
+
+            if (
+              result.candidates &&
+              result.candidates.length > 0 &&
+              result.candidates[0].content &&
+              result.candidates[0].content.parts &&
+              result.candidates[0].content.parts.length > 0
+            ) {
+              return result.candidates[0].content.parts[0].text;
+            } else {
+              return translations[currentLanguage].geminiError;
+            }
+          } catch (error) {
+            console.error("Gemini API call error:", error);
+            return translations[currentLanguage].geminiError;
+          }
+        }
+
+        // AI Expert Tip Modal Logic
+        const aiExpertModal = document.getElementById("aiExpertModal");
+        if (aiExpertModal) {
+          aiExpertModal.addEventListener(
+            "show.bs.modal",
+            async function (event) {
+              const button = event.relatedTarget;
+              const service = button.getAttribute("data-service");
+              const modalBody = document.getElementById("ai-tip-body");
+
+              modalBody.innerHTML = `<div class="d-flex justify-content-center align-items-center"><i class="fas fa-spinner fa-spin me-2"></i> <span data-lang-text="loading">${translations[currentLanguage].loading}</span></div>`;
+
+              const lang = currentLanguage === "ar" ? "Arabic" : "English";
+              const prompt = `As an expert car mechanic, provide a concise and practical maintenance tip for a car owner in Saudi Arabia regarding '${service}'. The tip should be easy to understand and actionable. Respond in ${lang} in a single paragraph.`;
+
+              const tip = await callGemini(prompt);
+              modalBody.innerHTML = `<p>${tip}</p>`;
+            }
+          );
+        }
+
+        // "Why Us" Modal Logic
+        const whyUsModal = document.getElementById("whyUsModal");
+        if (whyUsModal) {
+          whyUsModal.addEventListener("show.bs.modal", async function () {
+            const modalBody = document.getElementById("why-us-body");
+            const aboutText =
+              document.getElementById("about-text-content").textContent;
+
+            modalBody.innerHTML = `<div class="d-flex justify-content-center align-items-center"><i class="fas fa-spinner fa-spin me-2"></i> <span data-lang-text="loading">${translations[currentLanguage].loading}</span></div>`;
+
+            const lang = currentLanguage === "ar" ? "Arabic" : "English";
+            const prompt = `Based on the following text about 'Almusafir Tire', act as a marketing expert and write a short, persuasive paragraph in ${lang} (2-3 sentences) that highlights the key benefits for a customer. The text is: '${aboutText}'`;
+
+            const pitch = await callGemini(prompt);
+            modalBody.innerHTML = `<p>${pitch}</p>`;
+          });
+        }
+
+        // Smart Advisor Logic
+        const getRecommendationBtn = document.getElementById(
+          "get-recommendation-btn"
+        );
+        if (getRecommendationBtn) {
+          getRecommendationBtn.addEventListener("click", async () => {
+            const carType = document.getElementById("car-type").value;
+            const carModel = document.getElementById("car-model").value;
+            const drivingStyle = document.getElementById("driving-style").value;
+            const resultBox = document.getElementById("advisor-result-box");
+
+            resultBox.classList.remove("d-none");
+            resultBox.innerHTML = `<div class="d-flex justify-content-center align-items-center"><i class="fas fa-spinner fa-spin me-2"></i> <span data-lang-text="loading">${translations[currentLanguage].loading}</span></div>`;
+
+            const lang = currentLanguage === "ar" ? "Arabic" : "English";
+            const prompt = `Act as an expert automotive advisor in Saudi Arabia. A customer has a ${carType} (${carModel}) and their driving style is mostly '${drivingStyle}'.
+                    
+                    Please provide a recommendation for:
+                    1. The best type of tire (e.g., 'All-Season', 'Performance', 'Touring', 'All-Terrain').
+                    2. The best type of battery (e.g., 'AGM', 'EFB', 'Standard Flooded').
+
+                    For each recommendation, provide a short, clear justification (1-2 sentences) explaining why it's suitable for the customer's car and driving style in the context of Saudi Arabia's climate.
+                    
+                    Format the response with the following headings:
+                    **Tires Recommendation:**
+                    [Your tire recommendation and justification]
+                    
+                    **Battery Recommendation:**
+                    [Your battery recommendation and justification]
+
+                    Respond in ${lang}.`;
+
+            const recommendation = await callGemini(prompt);
+
+            const formattedHtml = recommendation
+              .replace(/\*\*(.*?)\*\*/g, "<h5>$1</h5>")
+              .replace(/\n/g, "<br>");
+
+            resultBox.innerHTML = formattedHtml;
+          });
+        }
+
+        // WhatsApp Form Logic
+        const sendWhatsappBtn = document.getElementById("send-whatsapp-btn");
+        if (sendWhatsappBtn) {
+          sendWhatsappBtn.addEventListener("click", function () {
+            const name = document.getElementById("whatsapp-name").value;
+            const phone = document.getElementById("whatsapp-phone").value;
+            const service = document.getElementById("whatsapp-service").value;
+
+            if (!name || !phone) {
+              alert("Please fill in all fields.");
+              return;
+            }
+
+            // IMPORTANT: Replace with your own WhatsApp number including the country code (without +)
+            const whatsappNumber = "01023532759"; // Example Saudi Number
+
+            const message = `
+                        Hello, I would like to request a service.
+                        Name: ${name}
+                        Phone: ${phone}
+                        Service: ${service}
+                    `;
+
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+              message.trim()
+            )}`;
+
+            window.open(whatsappUrl, "_blank");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
